@@ -48,9 +48,9 @@ namespace NinjaTrader.NinjaScript.Indicators
                 Period                    = 14;
                 atrThreshold              = 3.5;
                 adxThreshold              = 25;
-                textcolor                 = Brushes.WhiteSmoke;   
+                textcolor                 = Brushes.WhiteSmoke;   			
                 background                = Brushes.Transparent;  //-- Brushes.Transparent
-                outline                   = Brushes.OrangeRed;
+				outline                   = Brushes.OrangeRed;
 
             }
             else if (State == State.Configure)
@@ -61,27 +61,26 @@ namespace NinjaTrader.NinjaScript.Indicators
         protected override void OnBarUpdate()
         {
             //Add your custom indicator logic here.
-
             double atr = Math.Round(ATR(14)[0], 2);
             double adx = Math.Round(ADX(14)[0], 2);
 
-
+            
             Draw.TextFixed( this
                           , Name   //--  refer line 34
                           , " InfoBox: \n"      
                           + " ATR: " + atr.ToString()  + "    \n"
-                          + " ADX: " + adx.ToString()  + "    "  
+                          + " ADX: " + adx.ToString()  + "    " 
                           , TextPosition.TopRight
                           , textcolor      //--  ChartControl.Properties.ChartText
                           , boxTextFont    //--  ChartControl.Properties.LabelFont
                           , outline        //--  Brush outlineBrush  //-- Brushes.OrangeRed
                           , background     //--  Brush areaBrush  //--get value from "color Parameters"
                           , 100            //--  areaOpacity
-                          , DashStyleHelper.Solid
-                          , 1
-                          , false     //--  bool isGlobal
-                          , ""        //--  string templateName
-                          );
+				          , DashStyleHelper.Solid
+				          , 1
+				          , false     //--  bool isGlobal
+				          , ""        //--  string templateName
+                          );            
         }
         
         #region Properties
@@ -101,30 +100,30 @@ namespace NinjaTrader.NinjaScript.Indicators
         { get; set; }        
 
 
-
-        [XmlIgnore]
+		
+		[XmlIgnore]
         [Display(Name="textcolor", Order = 4, GroupName = "color Parameters")]
         public Brush textcolor
-        { get; set; }
+        { get; set; }		
 
-//--        [XmlIgnore]
+//--        [XmlIgnore]		
         [Display(Name="background", Order = 5, GroupName = "color Parameters")]
         public Brush background
         { get; set; }
 
-//--        [XmlIgnore]
-        [Display(Name="outline", Order = 6, GroupName = "color Parameters")]
+//--        [XmlIgnore]		
+		[Display(Name="outline", Order = 6, GroupName = "color Parameters")]
         public Brush outline
         { get; set; }
 
-
+		
         [Browsable(false)]
         public string textcolorSerializable
         {
             get { return Serialize.BrushToString(textcolor); }
             set { textcolor = Serialize.StringToBrush(value); }
-        }
-
+        }		
+		
         public string backgroundSerializable
         {
             get { return Serialize.BrushToString(background); }
@@ -135,11 +134,11 @@ namespace NinjaTrader.NinjaScript.Indicators
         {
             get { return Serialize.BrushToString(outline); }
             set { outline = Serialize.StringToBrush(value); }
-        }
-        
-        //----  
-        NinjaTrader.Gui.Tools.SimpleFont boxTextFont = new NinjaTrader.Gui.Tools.SimpleFont("Courier New", 10); 
-        
+        }		
+		
+		
+		NinjaTrader.Gui.Tools.SimpleFont boxTextFont = new NinjaTrader.Gui.Tools.SimpleFont("Courier New", 10); 
+		
         #endregion
         
     }
@@ -149,55 +148,55 @@ namespace NinjaTrader.NinjaScript.Indicators
 
 namespace NinjaTrader.NinjaScript.Indicators
 {
-    public partial class Indicator : NinjaTrader.Gui.NinjaScript.IndicatorRenderBase
-    {
-        private cdeATRbox[] cachecdeATRbox;
-        public cdeATRbox cdeATRbox(int period, double atrThreshold, double adxThreshold)
-        {
-            return cdeATRbox(Input, period, atrThreshold, adxThreshold);
-        }
+	public partial class Indicator : NinjaTrader.Gui.NinjaScript.IndicatorRenderBase
+	{
+		private cdeATRbox[] cachecdeATRbox;
+		public cdeATRbox cdeATRbox(int period, double atrThreshold, double adxThreshold)
+		{
+			return cdeATRbox(Input, period, atrThreshold, adxThreshold);
+		}
 
-        public cdeATRbox cdeATRbox(ISeries<double> input, int period, double atrThreshold, double adxThreshold)
-        {
-            if (cachecdeATRbox != null)
-                for (int idx = 0; idx < cachecdeATRbox.Length; idx++)
-                    if (cachecdeATRbox[idx] != null && cachecdeATRbox[idx].Period == period && cachecdeATRbox[idx].atrThreshold == atrThreshold && cachecdeATRbox[idx].adxThreshold == adxThreshold && cachecdeATRbox[idx].EqualsInput(input))
-                        return cachecdeATRbox[idx];
-            return CacheIndicator<cdeATRbox>(new cdeATRbox(){ Period = period, atrThreshold = atrThreshold, adxThreshold = adxThreshold }, input, ref cachecdeATRbox);
-        }
-    }
+		public cdeATRbox cdeATRbox(ISeries<double> input, int period, double atrThreshold, double adxThreshold)
+		{
+			if (cachecdeATRbox != null)
+				for (int idx = 0; idx < cachecdeATRbox.Length; idx++)
+					if (cachecdeATRbox[idx] != null && cachecdeATRbox[idx].Period == period && cachecdeATRbox[idx].atrThreshold == atrThreshold && cachecdeATRbox[idx].adxThreshold == adxThreshold && cachecdeATRbox[idx].EqualsInput(input))
+						return cachecdeATRbox[idx];
+			return CacheIndicator<cdeATRbox>(new cdeATRbox(){ Period = period, atrThreshold = atrThreshold, adxThreshold = adxThreshold }, input, ref cachecdeATRbox);
+		}
+	}
 }
 
 namespace NinjaTrader.NinjaScript.MarketAnalyzerColumns
 {
-    public partial class MarketAnalyzerColumn : MarketAnalyzerColumnBase
-    {
-        public Indicators.cdeATRbox cdeATRbox(int period, double atrThreshold, double adxThreshold)
-        {
-            return indicator.cdeATRbox(Input, period, atrThreshold, adxThreshold);
-        }
+	public partial class MarketAnalyzerColumn : MarketAnalyzerColumnBase
+	{
+		public Indicators.cdeATRbox cdeATRbox(int period, double atrThreshold, double adxThreshold)
+		{
+			return indicator.cdeATRbox(Input, period, atrThreshold, adxThreshold);
+		}
 
-        public Indicators.cdeATRbox cdeATRbox(ISeries<double> input , int period, double atrThreshold, double adxThreshold)
-        {
-            return indicator.cdeATRbox(input, period, atrThreshold, adxThreshold);
-        }
-    }
+		public Indicators.cdeATRbox cdeATRbox(ISeries<double> input , int period, double atrThreshold, double adxThreshold)
+		{
+			return indicator.cdeATRbox(input, period, atrThreshold, adxThreshold);
+		}
+	}
 }
 
 namespace NinjaTrader.NinjaScript.Strategies
 {
-    public partial class Strategy : NinjaTrader.Gui.NinjaScript.StrategyRenderBase
-    {
-        public Indicators.cdeATRbox cdeATRbox(int period, double atrThreshold, double adxThreshold)
-        {
-            return indicator.cdeATRbox(Input, period, atrThreshold, adxThreshold);
-        }
+	public partial class Strategy : NinjaTrader.Gui.NinjaScript.StrategyRenderBase
+	{
+		public Indicators.cdeATRbox cdeATRbox(int period, double atrThreshold, double adxThreshold)
+		{
+			return indicator.cdeATRbox(Input, period, atrThreshold, adxThreshold);
+		}
 
-        public Indicators.cdeATRbox cdeATRbox(ISeries<double> input , int period, double atrThreshold, double adxThreshold)
-        {
-            return indicator.cdeATRbox(input, period, atrThreshold, adxThreshold);
-        }
-    }
+		public Indicators.cdeATRbox cdeATRbox(ISeries<double> input , int period, double atrThreshold, double adxThreshold)
+		{
+			return indicator.cdeATRbox(input, period, atrThreshold, adxThreshold);
+		}
+	}
 }
 
 #endregion
