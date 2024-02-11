@@ -66,6 +66,16 @@ namespace NinjaTrader.NinjaScript.Indicators
             double adx = Math.Round(ADX(14)[0], 2);
 
 
+            if ( atr >= atrThreshold && adx >= adxThreshold ) {
+                background = Brushes.Green; //-- info_case
+                outline    = Brushes.Green;
+            }    
+            else {
+                background = Brushes.Transparent; //-- flat_case
+                outline    = Brushes.OrangeRed;
+            }    
+            //----
+
             Draw.TextFixed( this
                           , Name   //--  refer line 34
                           , " InfoBox: \n"      

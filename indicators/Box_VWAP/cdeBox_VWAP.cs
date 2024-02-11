@@ -45,7 +45,7 @@ namespace NinjaTrader.NinjaScript.Indicators
                 //See Help Guide for additional information.
 
                 IsSuspendedWhileInactive  = true;
-                textcolor                 = Brushes.WhiteSmoke;               
+                textcolor                 = Brushes.WhiteSmoke;
 
             }
             else if (State == State.Configure)
