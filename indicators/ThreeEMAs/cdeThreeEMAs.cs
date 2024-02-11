@@ -42,7 +42,7 @@ namespace NinjaTrader.NinjaScript.Indicators
                 ScaleJustification       = NinjaTrader.Gui.Chart.ScaleJustification.Right;
                 //Disable this property if your indicator requires custom values that cumulate with each new market data event. 
                 //See Help Guide for additional information.
-                IsSuspendedWhileInactive                    = true;
+                IsSuspendedWhileInactive = true;
 
                 EMA1                     =   8 ;
                 EMA2                     =  20 ;
