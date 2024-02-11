@@ -117,12 +117,12 @@ namespace NinjaTrader.NinjaScript.Indicators
         public Brush textcolor
         { get; set; }
 
-//--        [XmlIgnore]
+        [XmlIgnore]
         [Display(Name="background", Order = 5, GroupName = "color Parameters")]
         public Brush background
         { get; set; }
 
-//--        [XmlIgnore]
+        [XmlIgnore]
         [Display(Name="outline", Order = 6, GroupName = "color Parameters")]
         public Brush outline
         { get; set; }
@@ -135,12 +135,14 @@ namespace NinjaTrader.NinjaScript.Indicators
             set { textcolor = Serialize.StringToBrush(value); }
         }
 
+        [Browsable(false)]
         public string backgroundSerializable
         {
             get { return Serialize.BrushToString(background); }
             set { background = Serialize.StringToBrush(value); }
         }
 
+        [Browsable(false)]
         public string outlineSerializable
         {
             get { return Serialize.BrushToString(outline); }
@@ -148,6 +150,7 @@ namespace NinjaTrader.NinjaScript.Indicators
         }
         
         //----  
+
         NinjaTrader.Gui.Tools.SimpleFont boxTextFont = new NinjaTrader.Gui.Tools.SimpleFont("Courier New", 10); 
         
         #endregion
