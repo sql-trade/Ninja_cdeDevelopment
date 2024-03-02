@@ -48,10 +48,10 @@ namespace NinjaTrader.NinjaScript.Indicators
                 EMA2                        =  10 ;
                 EMA3                        =  20 ;
                 EMA4                        = 100 ;
-                AddPlot(Brushes.DodgerBlue  , "EMA1_plot") ;
-                AddPlot(Brushes.GreenYellow , "EMA2_plot") ;
-                AddPlot(Brushes.Lime        , "EMA3_plot") ;
-                AddPlot(Brushes.Red         , "EMA4_plot") ;
+                AddPlot(Brushes.DodgerBlue  , "EMA1_slope") ;
+                AddPlot(Brushes.GreenYellow , "EMA2_slope") ;
+                AddPlot(Brushes.Lime        , "EMA3_slope") ;
+                AddPlot(Brushes.Red         , "EMA4_slope") ;
             }
             else if (State == State.Configure)
             {
@@ -68,10 +68,10 @@ namespace NinjaTrader.NinjaScript.Indicators
             double ema4_Slope = Slope( EMA( EMA4 ) , 10, 0 ) ;
             
             //-- 2. "plot" the Values
-            EMA1_plot[0] = ema1_Slope ;
-            EMA2_plot[0] = ema2_Slope ;
-            EMA3_plot[0] = ema3_Slope ;
-            EMA4_plot[0] = ema4_Slope ;
+            EMA1_slope[0] = ema1_Slope ;
+            EMA2_slope[0] = ema2_Slope ;
+            EMA3_slope[0] = ema3_Slope ;
+            EMA4_slope[0] = ema4_Slope ;
         }
 
         #region Properties
@@ -101,28 +101,28 @@ namespace NinjaTrader.NinjaScript.Indicators
 
         [Browsable(false)]
         [XmlIgnore]
-        public Series<double> EMA1_plot
+        public Series<double> EMA1_slope
         {
             get { return Values[0]; }
         }
 
         [Browsable(false)]
         [XmlIgnore]
-        public Series<double> EMA2_plot
+        public Series<double> EMA2_slope
         {
             get { return Values[1]; }
         }
 
         [Browsable(false)]
         [XmlIgnore]
-        public Series<double> EMA3_plot
+        public Series<double> EMA3_slope
         {
             get { return Values[2]; }
         }
 
         [Browsable(false)]
         [XmlIgnore]
-        public Series<double> EMA4_plot
+        public Series<double> EMA4_slope
         {
             get { return Values[3]; }
         }
