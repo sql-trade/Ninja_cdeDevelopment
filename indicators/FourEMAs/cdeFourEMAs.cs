@@ -77,25 +77,25 @@ namespace NinjaTrader.NinjaScript.Indicators
         #region Properties
         [NinjaScriptProperty]
         [Range(1, int.MaxValue)]
-        [Display(Name="EMA1", Order=1, GroupName="Parameters")]
+        [Display(Name="EMA1", Order=11, GroupName="1Parameters")]
         public int EMA1
         { get; set; }
 
         [NinjaScriptProperty]
         [Range(1, int.MaxValue)]
-        [Display(Name="EMA2", Order=2, GroupName="Parameters")]
+        [Display(Name="EMA2", Order=12, GroupName="1Parameters")]
         public int EMA2
         { get; set; }
 
         [NinjaScriptProperty]
         [Range(1, int.MaxValue)]
-        [Display(Name="EMA3", Order=3, GroupName="Parameters")]
+        [Display(Name="EMA3", Order=13, GroupName="1Parameters")]
         public int EMA3
         { get; set; }
 
         [NinjaScriptProperty]
         [Range(1, int.MaxValue)]
-        [Display(Name="EMA4", Order=4, GroupName="Parameters")]
+        [Display(Name="EMA4", Order=14, GroupName="1Parameters")]
         public int EMA4
         { get; set; }
 
