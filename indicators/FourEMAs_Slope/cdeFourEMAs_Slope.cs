@@ -62,10 +62,10 @@ namespace NinjaTrader.NinjaScript.Indicators
         {
             //Add your custom indicator logic here.
             //-- 1. "calculate" the current Values
-            double ema1_Slope = Slope( EMA( EMA1 ) , 10, 0 );
-            double ema2_Slope = Slope( EMA( EMA2 ) , 10, 0 );
-            double ema3_Slope = Slope( EMA( EMA3 ) , 10, 0 );
-            double ema4_Slope = Slope( EMA( EMA4 ) , 10, 0 );
+            double ema1_Slope = Slope( EMA( EMA1 ) , 10, 0 ) ;
+            double ema2_Slope = Slope( EMA( EMA2 ) , 10, 0 ) ;
+            double ema3_Slope = Slope( EMA( EMA3 ) , 10, 0 ) ;
+            double ema4_Slope = Slope( EMA( EMA4 ) , 10, 0 ) ;
             
             //-- 2. "plot" the Values
             EMA1_plot[0] = ema1_Slope ;
